@@ -1,6 +1,4 @@
 <div>
   <h1>Test Component</h1>
-  <p id="count">some information {{count}}</p>
-  <p id="data">{{data?.test}}</p>
-  <button (click)="run()">some message</button>
+  <app-add-host *ngFor="let item of componentItems.components" [component]="item"></app-add-host>
 </div>

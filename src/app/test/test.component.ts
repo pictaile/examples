@@ -1,7 +1,11 @@
-import {Component, Host, OnInit, Optional, Self, SkipSelf} from '@angular/core';
+import {AfterViewInit, Component, Host, OnInit, Optional, Self, SkipSelf, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {delay} from "rxjs/operators";
 import {SomeServiceService} from "../services/some-service/some-service.service";
+
+import {CompOneComponent} from "../dynamic/comp-one/comp-one.component";
+import {CompTwoComponent} from "../dynamic/comp-two/comp-two.component";
+import {Schema} from "./Schema";
 
 @Component({
   selector: 'app-test',
@@ -10,28 +14,20 @@ import {SomeServiceService} from "../services/some-service/some-service.service"
   providers: [SomeServiceService]
 })
 export class TestComponent implements OnInit {
-  public count = 0;
-  public data: any;
+
+  componentItems = Schema;
+
 
   constructor(private http:  HttpClient,   @Self() @Optional() private service: SomeServiceService) { }
 
+
+
+
   ngOnInit(): void {
-    this.service.test();
-    this.http.get('assets/some.json').pipe(delay(2000)).subscribe({
-      next: (res) => {
-          this.data = res
-      }
-    });
-  }
-
-  public run() {
-    this.add();
 
   }
 
-  private add() {
-    this.count = this.count + 1;
-  }
+
 
 
 
